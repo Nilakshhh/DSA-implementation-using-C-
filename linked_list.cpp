@@ -117,11 +117,29 @@ struct List {
         return res;
   }
   }
-  bool isSorted(){
+  void remove_duplicates(){
   Node* temp = head;
   while(temp->next){
-
+    if(temp->data!=temp->next->data){
+        temp=temp->next;
+    }
+    else{
+            Node* q = temp->next;
+        temp->next = temp->next->next;
+    delete(q);
+    }
   }
+  }
+
+  bool isSorted(){
+  Node* temp = head;
+  int flag=0;
+  while(temp->next){
+        if(temp->data > temp->next->data){flag=1;break;}
+        temp = temp->next;
+  }
+  if(flag==1){return false;}
+  else{return true;}
   }
 
 };
@@ -129,8 +147,8 @@ struct List {
 int main() {
   List l;
   l.insert(1);
-  l.insert(2);
-  l.insert(30);
+  l.insert(20);
+  l.insert(40);
   l.insert(40);
   int numOfNodes = l.numNodes();
   cout << numOfNodes << endl;
@@ -145,6 +163,8 @@ int main() {
   l.display();
   int del = l._delete(2);
   l.display();
+  bool sortt = l.isSorted();
+  cout << sortt << endl;
 
   return 0;
 }
