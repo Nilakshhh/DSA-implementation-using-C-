@@ -12,6 +12,26 @@ void insertionSort(int a[], int n){
     }
 }
 
+void bubbleSort(int a[], int n){
+    int k=n;
+    bool swapped = false;
+    while(k>0){
+        swapped = false;
+        for(int i=0;i<k;i++){
+           for(int j=i+1;j<n;j++){
+               if(a[j]<a[j-1]){
+                   swap(a[j], a[j-1]);
+                   swapped = true;
+               }
+           }
+        }
+    k--;
+    if(swapped == false){
+        break;
+    }
+    }
+}
+
 int main()
 {
     int n;
