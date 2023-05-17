@@ -45,6 +45,28 @@ void selectionSort(int a[], int n){
 
 }
 
+helperQuick(int a[], int low, int high){
+    int i=low-1;
+    int piv = a[high];
+    for(int j=low;j<high;j++){
+        if(piv>a[j]){
+            i++;
+            swap(a[i], a[j]);
+        }
+    }
+    swap(a[i+1],a[high]);
+    return i+1;
+
+}
+
+void quickSort(int a[], int low, int high){
+    if(low<high){
+        int pi = helperQuick(a, low, high);
+        quickSort(a,low,pi-1);
+        quickSort(a,pi+1,high);
+    }
+}
+
 int main()
 {
     int n;
