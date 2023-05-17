@@ -67,6 +67,21 @@ void quickSort(int a[], int low, int high){
     }
 }
 
+void countSort(int a[], int n){
+    int temp[9]={0};
+    for(int i=0;i<n;i++){
+        temp[a[i]]++;
+    }
+    int j=0;
+    for(int i=0;i<n;i++){
+        while(temp[i]>0){
+            a[j]=i;
+            j++;
+            temp[i]--;
+        }
+    }
+}
+
 int main()
 {
     int n;
